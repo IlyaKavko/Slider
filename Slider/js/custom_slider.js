@@ -5,6 +5,7 @@ const defaultSettings = {
     navs: true,
     loop: true,
     autoplay: true,
+    timeout: 4000,
 };
 
 let moveNum = 0;
@@ -17,6 +18,8 @@ customSliderArr.forEach(item => item.customSlider = function (sliderSettings = {
     const navs = (sliderSettings.navs !== undefined) ? sliderSettings.navs : defaultSettings.navs;
     const loop = (sliderSettings.loop !== undefined) ? sliderSettings.loop : defaultSettings.loop;
     const autoplay = (sliderSettings.autoplay !== undefined) ? sliderSettings.autoplay : defaultSettings.autoplay;
+    const timeout = sliderSettings.timeout || defaultSettings.timeout;
+    const duration = sliderSettings.duration || defaultSettings.duration;
     const slides = item.querySelectorAll('div');
     const totalLength = slides.length * slidesOffset;
 
@@ -35,11 +38,12 @@ customSliderArr.forEach(item => item.customSlider = function (sliderSettings = {
 
     function nextSlideClick(e) {
         e.preventDefault()
-        let customSlider = this.closest('.custom_slider');
-        let innerContainer = customSlider.querySelector('.inner_container');
+        item.closest('.custom_slider');
+        let innerContainer = item.querySelector('.inner_container');
         if ((moveNum - slidesOffset) > -totalLength) {
             moveNum = moveNum - slidesOffset;
             innerContainer.style.transform = `translate(${moveNum}px, 0)`;
+            innerContainer.style.transition = `transform ${duration} ease-in`;
         } else if (loop) {
             moveNum = 0;
             innerContainer.style.transform = `translate(${moveNum}px, 0)`;
@@ -48,21 +52,35 @@ customSliderArr.forEach(item => item.customSlider = function (sliderSettings = {
 
     function prevSlideClick(e) {
         e.preventDefault()
-        let customSlider = this.closest('.custom_slider');
-        let innerContainer = customSlider.querySelector('.inner_container');
+        item.closest('.custom_slider');
+        let innerContainer = item.querySelector('.inner_container');
         if (moveNum < 0) {
             moveNum = moveNum + slidesOffset;
             innerContainer.style.transform = `translate(${moveNum}px, 0)`;
+            innerContainer.style.transition = `transform ${duration} ease-in`;
         } else if (loop) {
             moveNum = -totalLength + slidesOffset;
             innerContainer.style.transform = `translate(${moveNum}px, 0)`;
+            innerContainer.style.transition = `transform ${duration} ease-in`;
         }
     }
 
-    // if (autoplay) {
-    //     setInterval();
-    // }
-})
+    if (autoplay) {
+        function moveSlide() {
+            let innerContainer = item.querySelector('.inner_container');
+        if ((moveNum - slidesOffset) > -totalLength) {
+            moveNum = moveNum - slidesOffset;
+            innerContainer.style.transform = `translate(${moveNum}px, 0)`;
+            innerContainer.style.transition = `transform ${duration} ease-in`;
+        } else if (loop) {
+            moveNum = 0;
+            innerContainer.style.transform = `translate(${moveNum}px, 0)`;
+            innerContainer.style.transition = `transform ${duration} ease-in`;
+        }
+        }
+        setInterval(moveSlide, timeout);
+    }
+});
 
 function buildSlider(slider, slidesWidth, slidesHeight, slides, navs) {
     slides.forEach(item => {
