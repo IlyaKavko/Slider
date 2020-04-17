@@ -37,7 +37,7 @@ customSliderArr.forEach(item => item.customSlider = function (sliderSettings = {
     }
 
     function nextSlideClick(e) {
-        e.preventDefault()
+        e.preventDefault();
         item.closest('.custom_slider');
         let innerContainer = item.querySelector('.inner_container');
         if ((moveNum - slidesOffset) > -totalLength) {
@@ -47,11 +47,11 @@ customSliderArr.forEach(item => item.customSlider = function (sliderSettings = {
         } else if (loop) {
             moveNum = 0;
             innerContainer.style.transform = `translate(${moveNum}px, 0)`;
-        }
-    }
+        };
+    };
 
     function prevSlideClick(e) {
-        e.preventDefault()
+        e.preventDefault();
         item.closest('.custom_slider');
         let innerContainer = item.querySelector('.inner_container');
         if (moveNum < 0) {
@@ -62,8 +62,8 @@ customSliderArr.forEach(item => item.customSlider = function (sliderSettings = {
             moveNum = -totalLength + slidesOffset;
             innerContainer.style.transform = `translate(${moveNum}px, 0)`;
             innerContainer.style.transition = `transform ${duration} ease-in`;
-        }
-    }
+        };
+    };
 
     if (autoplay) {
         function moveSlide() {
@@ -76,10 +76,10 @@ customSliderArr.forEach(item => item.customSlider = function (sliderSettings = {
             moveNum = 0;
             innerContainer.style.transform = `translate(${moveNum}px, 0)`;
             innerContainer.style.transition = `transform ${duration} ease-in`;
-        }
-        }
+        };
+        };
         setInterval(moveSlide, timeout);
-    }
+    };
 });
 
 function buildSlider(slider, slidesWidth, slidesHeight, slides, navs) {
@@ -101,5 +101,5 @@ function buildSlider(slider, slidesWidth, slidesHeight, slides, navs) {
                 <a href="#" class="prev_slide"><</a>
                 <a href="#" class="next_slide">></a>
             </div>`
-    }
-}
+    };
+};
