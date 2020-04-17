@@ -1,5 +1,5 @@
 # My slider
-To start using my slider you need to insert the custom_slider.less file in your `<head>`:
+
 ```html
 <head>
     <meta charset="UTF-8">
@@ -30,7 +30,7 @@ mySlider.customSlider();
 
 Also you can configure this slider 
 
-# Settings
+### Settings
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------
