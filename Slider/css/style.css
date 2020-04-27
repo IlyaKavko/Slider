@@ -27,3 +27,23 @@
 .custom_slider .navs .prev_slide {
   margin-right: 20px;
 }
+.custom_slider .dots-item {
+  display: flex;
+  justify-content: center;
+}
+.custom_slider .dots-item .dots {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #e7e7e7;
+  border-radius: 100%;
+  background-color: #e7e7e7;
+}
+.custom_slider .dots-item .dots:not(:last-child) {
+  margin-right: 10px;
+}
+.custom_slider .dots-item .active {
+  width: 10px;
+  height: 10px;
+  border: 3px solid #e7e7e7;
+  background-color: #493d3d;
+}

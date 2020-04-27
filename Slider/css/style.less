@@ -9,6 +9,7 @@
             width: 8000px;
             display: flex;
         }
+        
     }
     .one_slide {
         display: flex;
@@ -26,6 +27,26 @@
         }
         .prev_slide {
             margin-right: 20px;
+        }
+    }
+    .dots-item {
+        display: flex;
+        justify-content: center;
+        .dots  {
+            width: 10px;
+            height: 10px;
+            border: 2px solid #e7e7e7;
+            &:not(:last-child){
+                margin-right: 10px;
+            }
+            border-radius: 100%;
+            background-color: #e7e7e7;
+        }
+        .active {
+            width: 10px;
+            height: 10px;
+            border: 3px solid #e7e7e7;
+            background-color: #493d3d;
         }
     }
 }

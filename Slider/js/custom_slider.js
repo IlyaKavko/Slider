@@ -152,18 +152,54 @@ customSliderArr.forEach(item => item.customSlider = function (sliderSettings = {
     startAutoplay();
 
     if (dots){
-        let innerContainer = item.querySelector('.inner_container');
         let dotsArr = document.querySelectorAll('div.one_slide');
         let dotsDiv = document.createElement('div');
-        innerContainer.append(dotsDiv);
+        item.append(dotsDiv);
         dotsDiv.classList.add('dots-item')
         for (let i = 0; i < dotsArr.length; i++){
             let dotsItem = document.createElement('div');
             dotsDiv.append(dotsItem)
             dotsItem.classList.add('dots')
         };
-            let dotsActive = dotsDiv.querySelector('div.dots');
-            dotsActive.classList.add('active');
+
+        let dotsActive = document.querySelector('div.dots');
+        dotsActive.classList.add('active');
+        let dotsNext = document.querySelector('.next_slide');
+        let dotsPrev = item.querySelector('.prev_slide');
+        let arr = 0;
+
+        dotsNext.addEventListener('click', () => {
+            let dotsActive = document.querySelector('div.dots');
+            dotsActive.classList.remove('active');
+            setTimeout(() => {
+                let arrDots = document.querySelectorAll('.dots');
+                arrDots[arr].classList.remove('active');
+                arr++
+                    if(arr < arrDots.length){
+                        arrDots[arr].classList.add('active');
+                    } else {
+                        arr = 0;
+                        arrDots[arr].classList.add('active');
+                    }
+            },delay)
+        });
+
+        let arrDots = document.querySelectorAll('.dots');
+        let lengthDots = arrDots.length;
+        dotsPrev.addEventListener('click', () => {
+            let dotsActive = document.querySelector('div.dots');
+            dotsActive.classList.remove('active');
+            setTimeout(() => {
+                arrDots[arr].classList.remove('active');
+                lengthDots--
+                if (lengthDots > 0){
+                arrDots[lengthDots].classList.add('active');
+                } else {
+                    arr = 0
+                    arrDots[arr].classList.add('active');
+                }
+            })
+        })
     }
   
 });
