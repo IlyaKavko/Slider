@@ -5,6 +5,7 @@ mySlider.customSlider({
     // maxSlides: 1,
     // navs: true,
     // loop: true,
-    // autoplay: true,
+    autoplay: false,
     // timeout: 4000,
+    //onHover: true,
 });

@@ -2,10 +2,12 @@
   overflow: hidden;
   margin: 0 auto;
 }
+.custom_slider .outer_container .no_transition {
+  transition: none !important;
+}
 .custom_slider .outer_container .inner_container {
   width: 8000px;
   display: flex;
-  transition: transform 0.5s ease-in;
 }
 .custom_slider .one_slide {
   display: flex;
