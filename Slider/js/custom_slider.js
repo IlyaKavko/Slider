@@ -9,7 +9,7 @@ const defaultSettings = {
     margin: 10,
     delay: 300,
     onHover: true,
-    dots:true,
+    dots: true,
 };
 
 let moveNum = 0;
@@ -143,6 +143,7 @@ customSliderArr.forEach(item => item.customSlider = function (sliderSettings = {
                 innerContainer.style.transform = `translate(0,0)`;
                 firstSlide().remove();
             },delay);
+            nextDots();
         }; 
     }
     let stopAutoplay;
@@ -155,24 +156,28 @@ customSliderArr.forEach(item => item.customSlider = function (sliderSettings = {
         let dotsArr = document.querySelectorAll('div.one_slide');
         let dotsDiv = document.createElement('div');
         item.append(dotsDiv);
-        dotsDiv.classList.add('dots-item')
+        dotsDiv.classList.add('dots-item');
         for (let i = 0; i < dotsArr.length; i++){
             let dotsItem = document.createElement('div');
-            dotsDiv.append(dotsItem)
-            dotsItem.classList.add('dots')
+            dotsDiv.append(dotsItem);
+            dotsItem.classList.add('dots');
         };
 
         let dotsActive = document.querySelector('div.dots');
         dotsActive.classList.add('active');
         let dotsNext = document.querySelector('.next_slide');
         let dotsPrev = item.querySelector('.prev_slide');
-        let arr = 0;
+        let arrDots = document.querySelectorAll('.dots');
+        let lengthDots = arrDots.length;
+        let arr = lengthDots;
+        lengthDots--;
+        arr = lengthDots - lengthDots;
 
-        dotsNext.addEventListener('click', () => {
-            let dotsActive = document.querySelector('div.dots');
-            dotsActive.classList.remove('active');
+        dotsNext.addEventListener('click', nextDots);
+        dotsPrev.addEventListener('click', prevDots);
+        
+        function nextDots() {
             setTimeout(() => {
-                let arrDots = document.querySelectorAll('.dots');
                 arrDots[arr].classList.remove('active');
                 arr++
                     if(arr < arrDots.length){
@@ -181,26 +186,27 @@ customSliderArr.forEach(item => item.customSlider = function (sliderSettings = {
                         arr = 0;
                         arrDots[arr].classList.add('active');
                     }
-            },delay)
-        });
+            },delay);
+        };
 
-        let arrDots = document.querySelectorAll('.dots');
-        let lengthDots = arrDots.length;
-        dotsPrev.addEventListener('click', () => {
-            let dotsActive = document.querySelector('div.dots');
-            dotsActive.classList.remove('active');
+        function prevDots() {
             setTimeout(() => {
                 arrDots[arr].classList.remove('active');
-                lengthDots--
-                if (lengthDots > 0){
-                arrDots[lengthDots].classList.add('active');
-                } else {
-                    arr = 0
+                arr--
+                if (arr > 0){
+                arrDots[arr].classList.add('active');
+                } else if (arr < 0) {
+                    arr = arrDots.length - 1;
                     arrDots[arr].classList.add('active');
-                }
-            })
-        })
-    }
+                } else {
+                    arr = 0;
+                    arrDots[arr].classList.add('active');
+                };
+            },delay);
+        };
+
+        
+    };
   
 });
 
