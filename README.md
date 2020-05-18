@@ -24,3 +24,34 @@ Then in your file .JS needs to create a variable and call the function. Example:
     mySlider.customSlider();
     
 ### Seting
+
+To set the settings, you need to open the curly brackets and enter the settings. Example:
+    
+    let mySlider = document.querySelector('.custom_slider');
+    mySlider.customSlider({
+        slideWidth: 300,
+        slideHeight: '',
+        maxSlides: 1,
+        navs: true,
+        loop: true,
+        autoplay: true,
+        timeout: 4000,
+        margin: 10,
+        delay: 300,
+        onHover: true,
+        dots: true,
+    });
+  
+Option          | Type            |Default           |        Description                       |
+:-------------: | :-------------: | :--------------: | :--------------------------------        |
+slideWidth:     | Number          | 300              | Sets the width of the slide.             |
+slideHeight:    | Number          | ''(auto)         | Sets the height of the slide.            |
+maxSlides:      | Number          | 1                | Sets the number of slides in the slider itself.|
+navs:           | Boolean         | true             | Enables the presence of navigation arrows.|
+loop:           | Boolean         | true             | Enables looping the slider.              |
+autoplay:       | Boolean         | true             | Enables autoplay the slider.             |
+timeout:        | Number          | 4000             | Sets the delay for autoplay of slider / Set in the thousands (1000 = 1s).|
+margin:         | Number          | 10               | Sets spacing between slides.             |
+delay:          | Number          | 300              | Sets the delay when scrolling the slide. |
+onHover:        | Boolean         | true             | Stops the autoplay when you hover / And when you remove the mouse hover autoplay starts again.|
+dots:           | Boolean         | true             | Enables navigation dots. |
