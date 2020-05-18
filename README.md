@@ -1,5 +1,7 @@
 # My slider
 
+### <a href="https://ilyakavko.github.io/">DEMO</a>
+
 To use the slider you need to <a href="https://github.com/IlyaKavko/Slider">download</a> two files and copy them to your file
 
 Add HTML markup to your `<body>`:
