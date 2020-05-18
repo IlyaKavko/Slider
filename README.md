@@ -2,7 +2,7 @@
 
 ### DEMO
 
-    <a href="https://ilyakavko.github.io/">https://ilyakavko.github.io/</a>
+    [https://ilyakavko.github.io/](https://ilyakavko.github.io/</a>)
 
 To use the slider you need to <a href="https://github.com/IlyaKavko/Slider">download</a> two files and copy them to your file
 
