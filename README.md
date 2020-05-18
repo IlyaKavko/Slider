@@ -4,8 +4,8 @@ To use the slider you need to <a href="https://github.com/IlyaKavko/Slider">down
 
 Add HTML markup to your `<body>`:
 
-    `<div class="custom_slider">
+    <div class="custom_slider">
         <div><img src="..." alt="..."></div>
         <div><img src="..." alt="..."></div>
         <div><img src="..." alt="..."></div>
-    </div>`
+    </div>
